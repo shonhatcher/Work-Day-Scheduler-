@@ -22,6 +22,18 @@ var newDiv17 = $("<div>");
 var newDiv18 = $("<div>");
 var newDiv19 = $("<div>");
 var newDiv20 = $("<div>");
+var newText1 = $("<textarea>");
+var newText2 = $("<textarea>");
+var newText3 = $("<textarea>");
+var newText4 = $("<textarea>");
+var newText5 = $("<textarea>");
+var newText6 = $("<textarea>");
+var newText7 = $("<textarea>");
+var newText8 = $("<textarea>");
+var newText9 = $("<textarea>");
+var newText10 = $("<textarea>");
+
+
 
 var x = 0;
 
@@ -30,7 +42,7 @@ var button = $("<button>");
 
 divArray1 = [newDiv1,newDiv2,newDiv3,newDiv4,newDiv5,newDiv6,newDiv7,newDiv8,newDiv9,newDiv10];
 divArray2 = [newDiv11,newDiv12,newDiv13,newDiv14,newDiv15,newDiv16,newDiv17,newDiv18,newDiv19,newDiv20];
-
+newTextArray = [newText1,newText2,newText3,newText4,newText5,newText6,newText7,newText8,newText9,newText10];
 hoursOfDay = ["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00"];
 
 for (var i = 0; i<hoursOfDay.length; i++) {
@@ -43,14 +55,14 @@ for (var i = 0; i<hoursOfDay.length; i++) {
     var n = (parseSubString(hoursOfDay[x]));
     var ppf = pastPresentFuture(n);
     x++;
-    divArray1[i].append("<textarea>");
-    $("textarea").addClass("hour col-10");
+    divArray1[i].append(newTextArray[i]);
+    newTextArray[i].addClass("hour col-10");
     if(ppf == "past") {
-        $("textarea").addClass("past");
+        newTextArray[i].addClass("past");
     } else if (ppf=="present") {
-        $("textarea").addClass("present");
+        newTextArray[i].addClass("present");
     } else {
-        $("textarea").addClass("future");
+        newTextArray[i].addClass("future");
     }
     (divArray1[i]).append("<button>");
     $("button").addClass("saveBtn i:hover col-1 fas fa-lock");
@@ -63,7 +75,8 @@ function parseSubString (y) {
 
 function pastPresentFuture (z) {
     //converting moments into an integer
-    const m = (moment().format('h:mmA'));
+    const m = (moment().format('HH:mmA'));
+    console.log(m);
     var int = (parseInt(m));
     if(z<int){
         return("past");
